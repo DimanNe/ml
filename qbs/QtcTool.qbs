@@ -30,7 +30,7 @@ QtcProduct {
     cpp.dynamicLibraries: {
        var result = []
        if(useShark)
-          result.push("omp", "shark", "boost_serialization")
+          result.push("gslcblas", "omp", "shark", "boost_serialization")
        return result
     }
     cpp.rpaths: {

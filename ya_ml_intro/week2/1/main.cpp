@@ -1,10 +1,14 @@
+// http://image.diku.dk/shark/sphinx_pages/build/html/rest_sources/tutorials/algorithms/nearestNeighbor.html?highlight=knn
+
 #include <shark/Data/CVDatasetTools.h>
 #include <shark/Data/Csv.h>
 #include <shark/Data/Dataset.h>
 
 
 
+#include <shark/Algorithms/NearestNeighbors/SimpleNearestNeighbors.h>
 #include <shark/Algorithms/NearestNeighbors/TreeNearestNeighbors.h>
+#include <shark/Models/Kernels/LinearKernel.h>
 #include <shark/Models/NearestNeighborClassifier.h>
 #include <shark/Models/Trees/KDTree.h>
 #include <shark/ObjectiveFunctions/Loss/ZeroOneLoss.h>
@@ -12,19 +16,24 @@ double TrainAndCalcAccuracy(const shark::ClassificationDataset &TrainingDataSet,
                             const shark::ClassificationDataset &ValidationDataSet,
                             size_t                              k) noexcept {
    shark::KDTree<shark::RealVector> Tree(TrainingDataSet.inputs());
-   shark::TreeNearestNeighbors<shark::RealVector, unsigned int> Algo(TrainingDataSet, &Tree);
+   /// This
+   //    shark::TreeNearestNeighbors<shark::RealVector, unsigned int> Algo(TrainingDataSet, &Tree);
+   /// Or This
+   shark::LinearKernel<> Kernel;
+   shark::SimpleNearestNeighbors<shark::RealVector, unsigned int> Algo(TrainingDataSet, &Kernel);
+
    shark::NearestNeighborClassifier<shark::RealVector> KNN(&Algo, k);
 
    shark::ZeroOneLoss<unsigned int> Loss;
    shark::Data<unsigned int>        Prediction;
 
-//   Prediction                           = KNN(TrainingDataSet.inputs());
-//   const double TrainingDataSetAccuracy = 1. - Loss.eval(TrainingDataSet.labels(), Prediction);
-//   std::cout << k << "-KNN on training set accuracy: " << TrainingDataSetAccuracy << std::endl;
+   //   Prediction                           = KNN(TrainingDataSet.inputs());
+   //   const double TrainingDataSetAccuracy = 1. - Loss.eval(TrainingDataSet.labels(), Prediction);
+   //   std::cout << k << "-KNN on training set accuracy: " << TrainingDataSetAccuracy << std::endl;
 
    Prediction                             = KNN(ValidationDataSet.inputs());
    const double ValidationDataSetAccuracy = 1. - Loss.eval(ValidationDataSet.labels(), Prediction);
-   //std::cout << k << "-KNN on validation set accuracy: " << ValidationDataSetAccuracy << std::endl;
+   // std::cout << k << "-KNN on validation set accuracy: " << ValidationDataSetAccuracy << std::endl;
 
    return ValidationDataSetAccuracy;
 }
@@ -59,7 +68,7 @@ void ChooseBestKInKNN(shark::ClassificationDataset &Data) noexcept {
 #include <shark/Algorithms/Trainers/NormalizeComponentsUnitVariance.h>
 #include <shark/Models/Normalizer.h>
 shark::ClassificationDataset Normalize(shark::ClassificationDataset Data) noexcept {
-   shark::Normalizer<shark::RealVector> Normalizer;
+   shark::Normalizer<shark::RealVector>                      Normalizer;
    shark::NormalizeComponentsUnitVariance<shark::RealVector> NormalizingTrainer(true);
    NormalizingTrainer.train(Normalizer, Data.inputs());
    Data.makeIndependent();
