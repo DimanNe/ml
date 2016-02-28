@@ -62,6 +62,7 @@ shark::ClassificationDataset Normalize(shark::ClassificationDataset Data) noexce
    shark::Normalizer<shark::RealVector> Normalizer;
    shark::NormalizeComponentsUnitVariance<shark::RealVector> NormalizingTrainer(true);
    NormalizingTrainer.train(Normalizer, Data.inputs());
+   Data.makeIndependent();
    Data = shark::transformInputs(Data, Normalizer);
    return Data;
 }
