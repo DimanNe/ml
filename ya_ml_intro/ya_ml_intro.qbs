@@ -14,7 +14,7 @@ Application {
 
    cpp.debugInformation: true
    cpp.cxxLanguageVersion: "c++14"
-   cpp.cxxFlags: ["-fopenmp=libomp"]
+   cpp.cxxFlags: ["-fopenmp=libomp", "-openmp"]
    cpp.includePaths: [ "/home/Void/devel/boost" ]
 
    cpp.libraryPaths: [
@@ -22,6 +22,7 @@ Application {
       "/usr/lib/x86_64-linux-gnu/",
    ]
    cpp.dynamicLibraries: [
+      "omp",
       "shark",
       "boost_serialization" ]
 
@@ -31,3 +32,8 @@ Application {
       qbs.install: true
    }
 }
+
+
+//Build boost
+//./bootstrap.sh --with-toolset=clang
+//./b2 -j12 toolset=clang cxxflags=-std=c++14
