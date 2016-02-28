@@ -1,6 +1,5 @@
 #include <shark/Data/Csv.h>
 #include <shark/Data/Dataset.h>
-
 using namespace shark;
 
 int main() {

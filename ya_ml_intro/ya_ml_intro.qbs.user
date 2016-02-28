@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.6.82, 2016-02-27T22:09:25. -->
+<!-- Written by QtCreator 3.6.82, 2016-02-28T11:04:49. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -212,13 +212,15 @@
      <value type="int">14</value>
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes">
+     <value type="QString">LD_LIBRARY_PATH=/home/Void/devel/boost/stage/lib:/home/Void/devel/Qt5Bin/5.6/gcc_64/lib:</value>
+    </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">ya_ml_intro</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qbs.RunConfiguration:ya_ml_intro.qtc_Qt_5_6_0_92937e2b---Qbs.RC.NameSeparator---ya_ml_intro</value>
     <value type="QString" key="Qbs.RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qbs.RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="Qbs.RunConfiguration.WorkingDirectory.default"></value>
+    <value type="QString" key="Qbs.RunConfiguration.WorkingDirectory.default">/home/Void/devel/ml/build-ya_ml_intro-Qt_5_6_0_gcc_64_clang-Debug/qtc_Qt_5_6_0_92937e2b-debug/install-root</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
