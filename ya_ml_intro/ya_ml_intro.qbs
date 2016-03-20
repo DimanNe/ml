@@ -1,11 +1,13 @@
 import qbs
 
 Project {
-    name: "YandexMLIntro"
-    references: [
-        "week2/1/assignment.qbs",
-        "week2/2/assignment.qbs",
-    ]
+   name: "YandexMLIntro"
+   references: [
+      "week2/1/assignment.qbs",
+      "week2/2/assignment.qbs",
+      "week2/3/assignment.qbs",
+      "week3/1/assignment.qbs",
+   ]
 }
 
 //Build boost

@@ -12,11 +12,12 @@
 #include <shark/Models/NearestNeighborClassifier.h>
 #include <shark/Models/Trees/KDTree.h>
 #include <shark/ObjectiveFunctions/Loss/ZeroOneLoss.h>
+#include <shark/Models/Kernels/MonomialKernel.h>
 double TrainAndCalcAccuracy(const shark::ClassificationDataset &TrainingDataSet,
                             const shark::ClassificationDataset &ValidationDataSet,
                             size_t                              k) noexcept {
-   shark::KDTree<shark::RealVector> Tree(TrainingDataSet.inputs());
    /// This
+   //    shark::KDTree<shark::RealVector> Tree(TrainingDataSet.inputs());
    //    shark::TreeNearestNeighbors<shark::RealVector, unsigned int> Algo(TrainingDataSet, &Tree);
    /// Or This
    shark::LinearKernel<> Kernel;
